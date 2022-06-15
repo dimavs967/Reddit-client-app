@@ -6,7 +6,9 @@ data class ResponseModel(
 )
 
 data class DataModel(
+    val after: String,
     val children: List<SubDataModel>,
+    val before: String
 )
 
 data class SubDataModel(
