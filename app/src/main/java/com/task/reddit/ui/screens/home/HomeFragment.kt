@@ -2,12 +2,13 @@ package com.task.reddit.ui.screens.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.task.reddit.databinding.FragmentHomeBinding
+import com.task.reddit.model.ImageModel
 import com.task.reddit.ui.screens.home.adapter.ArticlesAdapter
-import com.task.reddit.ui.screens.home.adapter.ArticleDiffCallback
+import com.task.reddit.util.ArticleDiffCallback
 import com.task.reddit.ui.screens.base.BaseFragment
 import com.task.reddit.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by activityViewModels()
     private var adapter: ArticlesAdapter? = null
 
     override fun getViewBinding(): FragmentHomeBinding =
@@ -34,6 +35,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             lifecycleScope.launch {
                 adapter?.submitData(it)
             }
+        }
+
+        adapter?.onClickListener {
+            navigator.open(
+                HomeFragmentDirections.actionHomeFragmentToMediaBottomSheetFragment(
+                    ImageModel(it.title, it.url)
+                )
+            )
         }
     }
 

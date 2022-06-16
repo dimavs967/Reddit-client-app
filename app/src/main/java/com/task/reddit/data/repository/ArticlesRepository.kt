@@ -15,7 +15,7 @@ class ArticlesRepository @Inject constructor(
 
     fun getPagingLiveData(): LiveData<PagingData<ArticleModel>> {
         return Pager(
-            config = PagingConfig(5, enablePlaceholders = false)
+            config = PagingConfig(10, enablePlaceholders = false)
         ) { pagingSource }.liveData
     }
 

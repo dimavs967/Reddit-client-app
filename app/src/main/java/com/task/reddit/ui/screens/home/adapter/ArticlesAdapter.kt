@@ -3,7 +3,6 @@ package com.task.reddit.ui.screens.home.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -14,12 +13,12 @@ import com.task.reddit.R
 import com.task.reddit.model.ArticleModel
 
 class ArticlesAdapter(
-    private var onClickListener: (Int) -> Unit = {},
+    private var onClickListener: (ArticleModel) -> Unit = {},
     diffCallback: DiffUtil.ItemCallback<ArticleModel>
 ) : PagingDataAdapter<ArticleModel, ArticlesAdapter.ViewHolder>(diffCallback) {
 
-    fun onClickListener(position: (Int) -> Unit) {
-        onClickListener = position
+    fun onClickListener(item: (ArticleModel) -> Unit) {
+        onClickListener = item
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,10 +26,6 @@ class ArticlesAdapter(
 
         item?.let {
             holder.bind(item)
-        }
-
-        holder.itemView.setOnClickListener {
-            onClickListener(position)
         }
     }
 
@@ -42,10 +37,10 @@ class ArticlesAdapter(
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
         private val title: TextView = view.findViewById(R.id.title)
         private val author: TextView = view.findViewById(R.id.author)
         private val comments: TextView = view.findViewById(R.id.comments)
-        private val created: TextView = view.findViewById(R.id.created)
         private val subReddit: TextView = view.findViewById(R.id.sub_reddit)
 
         private val thumb: ShapeableImageView = view.findViewById(R.id.thumb)
@@ -69,6 +64,9 @@ class ArticlesAdapter(
                 .load(article.thumbnail)
                 .into(thumb)
 
+            preview.setOnClickListener {
+                onClickListener(article)
+            }
         }
     }
 

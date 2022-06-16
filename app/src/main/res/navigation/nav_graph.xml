@@ -7,6 +7,20 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.task.reddit.ui.screens.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_mediaBottomSheetFragment"
+            app:destination="@id/mediaBottomSheetFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/mediaBottomSheetFragment"
+        android:name="com.task.reddit.ui.screens.media.MediaBottomSheetFragment"
+        android:label="MediaBottomSheetFragment">
+
+        <argument
+            android:name="imageModel"
+            app:argType="com.task.reddit.model.ImageModel" />
+    </dialog>
 
 </navigation>

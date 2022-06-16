@@ -1,4 +1,4 @@
-package com.task.reddit.ui.screens.home.adapter
+package com.task.reddit.util
 
 import androidx.recyclerview.widget.DiffUtil
 import com.task.reddit.model.ArticleModel

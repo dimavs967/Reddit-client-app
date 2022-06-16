@@ -33,12 +33,4 @@ object AppModule {
         return ArticlesRepository(pagingSource)
     }
 
-    @Singleton
-    @Provides
-    fun providePagingSource(
-        api: RetrofitApi
-    ): ArticlePagingSource {
-        return ArticlePagingSource(api)
-    }
-
 }

@@ -17,15 +17,19 @@ class ArticlePagingSource @Inject constructor(
     private var after = ""
 
     override fun getRefreshKey(state: PagingState<Int, ArticleModel>): Int? {
-        val anchorPosition = state.anchorPosition ?: return null
-        val page = state.closestPageToPosition(anchorPosition) ?: return null
-        return page.prevKey?.plus(1) ?: page.nextKey?.minus(1)
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
+        }
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleModel> {
         try {
             val page = params.key ?: 1
-            val response = api.request(page.toString(), after, "10")
+            val response = api.request(
+                page.toString(),
+                after, "10"
+            )
 
             return if (response.isSuccessful) {
                 response.body()?.let { after = it.data.after }

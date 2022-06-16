@@ -1,6 +1,7 @@
 package com.task.reddit.navigation
 
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,9 +14,9 @@ class Navigator @Inject constructor(): INavigator {
         this.navController = navController
     }
 
-    override fun open(screen: Int) {
+    override fun open(navDirections: NavDirections) {
         try {
-            navController?.navigate(screen)
+            navController?.navigate(navDirections)
         } catch (ex: IllegalArgumentException) {
             ex.printStackTrace()
         }
