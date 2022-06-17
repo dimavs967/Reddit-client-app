@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Reddit</string>
+    <string name="app_name">Reddit Client</string>
+
+    <string name="offline_text">Check your internet connection</string>
+    <string name="need_permission">Need permission to save</string>
+    <string name="save_to_gallery_button">Save to gallery</string>
+    <string name="retry_button">Retry</string>
+    <string name="reddit_icon_description">reddit icon</string>
+    <string name="posted_by_text">Posted by</string>
+    <string name="comments_icon_description">comments icon</string>
 </resources>
