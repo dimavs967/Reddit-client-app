@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class Navigator @Inject constructor(): INavigator {
+class Navigator @Inject constructor() : INavigator {
 
     private var navController: NavController? = null
 

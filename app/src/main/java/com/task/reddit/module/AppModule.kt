@@ -1,6 +1,5 @@
 package com.task.reddit.module
 
-import com.task.reddit.data.paging.ArticlePagingSource
 import com.task.reddit.data.remote.RetrofitApi
 import com.task.reddit.data.repository.ArticlesRepository
 import dagger.Module
@@ -28,9 +27,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRepository(
-        pagingSource: ArticlePagingSource
+        api: RetrofitApi
     ): ArticlesRepository {
-        return ArticlesRepository(pagingSource)
+        return ArticlesRepository(api)
     }
 
 }

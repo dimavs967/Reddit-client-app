@@ -1,4 +1,4 @@
-package com.task.reddit.ui.screens.home.adapter
+package com.task.reddit.adapter
 
 import android.view.LayoutInflater
 import android.view.View

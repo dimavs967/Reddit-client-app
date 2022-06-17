@@ -7,16 +7,15 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 
-object ImageHelper {
+class ImageDownloader {
+
+    private var outStream: FileOutputStream? = null
+    private val sdCard: File = Environment.getExternalStorageDirectory()
+    private val path = sdCard.absolutePath + "/Download"
 
     fun saveImage(bitmap: Bitmap, title: String): String {
-        var outStream: FileOutputStream? = null
 
-        val sdCard: File = Environment.getExternalStorageDirectory()
-        val path = sdCard.absolutePath + "/Download"
-        val dir = File(path)
-
-        dir.mkdirs()
+        val dir = File(path).also { it.mkdirs() }
         val outFile = File(dir, "$title.jpg")
 
         try {

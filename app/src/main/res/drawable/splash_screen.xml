@@ -5,7 +5,7 @@
     <item
         android:width="1in"
         android:height="1in"
-        android:drawable="@drawable/ic_launcher_background"
+        android:drawable="@drawable/reddit_logo"
         android:gravity="center"
         tools:ignore="UnusedAttribute" />
 </layer-list>

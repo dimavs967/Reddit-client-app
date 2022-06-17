@@ -9,9 +9,9 @@ interface RetrofitApi {
 
     @GET("top.json")
     suspend fun request(
-        @Query("count") count: String,
+        @Query("count") count: Int,
         @Query("after") after: String,
-        @Query("limit") limit: String
+        @Query("limit") limit: Int
     ): Response<ResponseModel>
 
 }

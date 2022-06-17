@@ -19,4 +19,4 @@ data class ArticleModel(
 data class ImageModel(
     val title: String,
     val url: String
-): Parcelable
+) : Parcelable
